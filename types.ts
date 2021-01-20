@@ -1,84 +1,104 @@
+//Decorators
 
+
+
+//Top-Bottom Types
+function isDefined<T>(arg: T | string  ): boolean {
+  var x:boolean = typeof arg !== 'string';
+  console.log(x);
+  return x;
+} 
+
+const list = ['1','2',56,'3',123];
+const filtered = list.filter(isDefined);
+
+console.log(filtered);
+
+let y=4 as string | number;
+if(typeof y === 'number'){
+  console.log(y.toFixed(2)); 
+}
+  
 
 //generics
-type people = {
-  name:string;
-  age:number;
-  batsman:boolean;
-}
-interface cricketer<people>{
-  people1:people;
-}
- function printName<T>(input:T):void{
-   console.log(`Name: ${input['name']} \nAge: ${input['age']} \nbatsman: ${input['batsman']} \n length of cricketer is ${input}`);
- }
+// type people = {
+//   name:string;
+//   age:number;
+//   batsman:boolean;
+// }
+// interface cricketer<people>{
+//   people1:people;
+// }
+//  function printName<T>(input:T):void{
+//    console.log(`Name: ${input['name']} \nAge: ${input['age']} \nbatsman: ${input['batsman']} \n length of cricketer is ${input}`);
+//  }
 
- let Kohli:cricketer<people> = {
-   people1:{
-    name:'virat Kohli',
-    age: 33,
-    batsman : true,
-   }
- }
-let Dhoni: cricketer<people> ={
- people1 : {
-   name:"MS Dhoni",
-   age:39,
-   batsman:true
- },
-}
-printName(Kohli.people1);
+//  let Kohli:cricketer<people> = {
+//    people1:{
+//     name:'virat Kohli',
+//     age: 33,
+//     batsman : true,
+//    }
+//  }
+// let Dhoni: cricketer<people> ={
+//  people1 : {
+//    name:"MS Dhoni",
+//    age:39,
+//    batsman:true
+//  },
+// }
+// printName(Kohli.people1);
 
-//Type Alias
-type uid = string | number;
-type phoneNo = number;
+// //Type Alias
+// type uid = string | number;
+// type phoneNo = number;
 
-type person = {
-  userId : uid;
-  firstname: string,
-  lastname: string,
-  phoneNo : phoneNo;
-  sayHI:()=> string;
-};
+// type person = {
+//   userId : uid;
+//   firstname: string,
+//   lastname: string,
+//   phoneNo : phoneNo;
+//   sayHI:()=> string;
+// };
 
-const person1 : person = {
-  userId : 'Jigar'+743,
-  firstname:'Jigar',
-  lastname:'Modi',
-  phoneNo: 8780641220,
-  sayHI : ():string => {return "Hi I am"}
-} 
-console.log('Type Alias\n'+person1.sayHI()+" "+person1.firstname+" "+person1.lastname+"."+ "My Phone No is "+person1.phoneNo);
+// const person1 : person = {
+//   userId : 'Jigar'+743,
+//   firstname:'Jigar',
+//   lastname:'Modi',
+//   phoneNo: 8780641220,
+//   sayHI : ():string => {return "Hi I am"}
+// } 
+// console.log('Type Alias\n'+person1.sayHI()+" "+person1.firstname+" "+person1.lastname+"."+ "My Phone No is "+person1.phoneNo);
 
-// Interface 
-interface SquareConfig {
-  color?: string;
-  width?: number;
-}
+// // Interface 
+// interface SquareConfig {
+//   color?: string;
+//   width?: number;
+// }
 
-const createSquare = (config: SquareConfig): { color: string; area: number } => {
-  let newSquare = { color: config.color, area: 100 };
-  if (config.color) {
-    newSquare.color = config.color;
-  }
-  if (config.width) {
-    newSquare.area = config.width * config.width;
-  }
-  return newSquare;
-}
-const button = document.querySelector("button");
-const input1 = document.getElementById("pointX")! as HTMLInputElement;
-const input2 = document.getElementById("pointY")! as HTMLInputElement;
-const paragraph = document.getElementById('demo')! as HTMLInputElement;
+// const createSquare = (config: SquareConfig): { color: string; area: number } => {
+//   let newSquare = { color: config.color, area: 100 };
+//   if (config.color) {
+//     newSquare.color = config.color;
+//   }
+//   if (config.width) {
+//     newSquare.area = config.width * config.width;
+//   }
+//   return newSquare;
+// }
+// const button = document.querySelector("button");
+// const input1 = document.getElementById("pointX")! as HTMLInputElement;
+// const input2 = document.getElementById("pointY")! as HTMLInputElement;
+// const paragraph = document.getElementById('demo')! as HTMLInputElement;
 
-const obj = [];
-button.addEventListener("click",function(){
-  let x= createSquare({color: input1.value, width: +input2.value});
-  obj.push(x);
-  paragraph.innerHTML = x.color;  
-  console.log('Interface\n'+obj);
-  // paragraph.textContent = MoneyToWord(+money.value).toString();
-});
+// const obj = [];
+// button.addEventListener("click",function(){
+//   let x= createSquare({color: input1.value, width: +input2.value});
+//   obj.push(x);
+//   paragraph.innerHTML = x.color;  
+//   console.log('Interface\n'+obj);
+//   // paragraph.textContent = MoneyToWord(+money.value).toString();
+// });
 
 // const button = document.querySelector("button");
 // const input1 = document.getElementById("num1")! as HTMLInputElement;
